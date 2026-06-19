@@ -6,6 +6,9 @@ import SuccessBanner from "./SuccessBanner";
 
 const SOLVED_KEY = "cybervulnx-solved";
 
+// ✅ ENV BASE URL
+const API = import.meta.env.VITE_API_URL;
+
 export default function LoginSection({ solved, setSolved }) {
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
@@ -14,7 +17,7 @@ export default function LoginSection({ solved, setSolved }) {
 
   const login = async (credentials) => {
     try {
-      const res = await fetch("http://localhost:3000/api/login", {
+      const res = await fetch(`${API}/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -29,11 +32,12 @@ export default function LoginSection({ solved, setSolved }) {
       setUser(data.user || null);
       setRole(data.role || null);
 
-      // ✅ ONLY ADMIN SOLVES THE LAB
+      // ONLY ADMIN SOLVES LAB
       if (data.success && data.role === "admin") {
         localStorage.setItem(SOLVED_KEY, "true");
         setSolved(true);
       } else {
+        localStorage.removeItem(SOLVED_KEY);
         setSolved(false);
       }
 
@@ -47,7 +51,7 @@ export default function LoginSection({ solved, setSolved }) {
 
   const resetLab = async () => {
     try {
-      await fetch("http://localhost:3000/api/reset", {
+      await fetch(`${API}/api/reset`, {
         method: "POST"
       });
     } catch (err) {
