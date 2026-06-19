@@ -1,6 +1,8 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import loginRoute from "./routes/login.js";
 import resetRoute from "./routes/reset.js";
@@ -10,16 +12,25 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static("public"));
+// ES module fix for __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-app.use("/api/login", loginRoute);
-
-app.get((req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
+// API routes
 app.use("/api/login", loginRoute);
 app.use("/api/reset", resetRoute);
 
-app.listen(3000, () => {
-  console.log("CyberVulnX SQLi Lab running");
+// Serve frontend
+app.use(express.static(path.join(__dirname, "public")));
+
+// fallback route (VERY IMPORTANT)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// use Render port
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("CyberVulnX SQLi Lab running on port", PORT);
 });
