@@ -24,7 +24,7 @@ app.use("/api/reset", resetRoute);
 app.use(express.static(path.join(__dirname, "public")));
 
 // fallback route (VERY IMPORTANT)
-app.get("*", (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
