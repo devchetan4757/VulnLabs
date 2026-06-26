@@ -21,11 +21,11 @@ app.use("/api/login", loginRoute);
 app.use("/api/reset", resetRoute);
 
 // Serve frontend
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "static")));
 
 // fallback route (VERY IMPORTANT)
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "static", "index.html"));
 });
 
 // use Render port
