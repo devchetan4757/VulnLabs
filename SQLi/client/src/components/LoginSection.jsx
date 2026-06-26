@@ -6,8 +6,6 @@ import SuccessBanner from "./SuccessBanner";
 
 const SOLVED_KEY = "cybervulnx-solved";
 
-// ✅ ENV BASE URL
-const API = import.meta.env.VITE_API_URL;
 
 export default function LoginSection({ solved, setSolved }) {
   const [message, setMessage] = useState("");
@@ -17,7 +15,7 @@ export default function LoginSection({ solved, setSolved }) {
 
   const login = async (credentials) => {
     try {
-      const res = await fetch(`${API}/api/login`, {
+      const res = await fetch(`/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -51,7 +49,7 @@ export default function LoginSection({ solved, setSolved }) {
 
   const resetLab = async () => {
     try {
-      await fetch(`${API}/api/reset`, {
+      await fetch(`/api/reset`, {
         method: "POST"
       });
     } catch (err) {

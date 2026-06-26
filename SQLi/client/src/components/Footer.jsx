@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <p>
-        CyberVulnX • SQL Injection Lab • BK Birla College
+        CyberVulnX • SQL Injection Lab 
       </p>
     </footer>
   );
