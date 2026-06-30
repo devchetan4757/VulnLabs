@@ -28,8 +28,7 @@ export default function OrderIntro() {
 
       <p className="intro-text">
         You are logged in as the demo user below. Your own
-        order is <strong>Order #3</strong>. Try looking up
-        orders belonging to other users.
+        order is <strong>Order #3</strong>.
       </p>
 
       <div className="demo-card">
