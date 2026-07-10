@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 
 $FILES_DIR = __DIR__ . '/../files';
-$TTL       = 40 * 60; // 40 minutes in seconds
+$TTL       = 40 * 60; // 40 minutes 
 
 // ── 1. Flush expired session folders ─────────────────────────────────
 // Runs on every new upload so no cron needed.

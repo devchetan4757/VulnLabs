@@ -1,8 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-// TODO: set this to whatever flag ends up placed alongside the image
-const FLAG = 'FLAG{change_me}';
+const FLAG = 'CVX{web_based_terminal_w0w}';
 
 $raw = file_get_contents('php://input');
 $input = json_decode($raw, true);
