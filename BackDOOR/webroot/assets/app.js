@@ -1,6 +1,6 @@
 const SOLVED_KEY   = "lab-solved";
 const SESSION_KEY  = "lab-session-id";
-const PATH_KEY     = "lab-upload-path";
+const PATHS_KEY    = "lab-upload-paths";
 
 function getSessionId() {
   let id = localStorage.getItem(SESSION_KEY);
@@ -29,6 +29,35 @@ const flagBtn       = document.getElementById("flagBtn");
 const flagError     = document.getElementById("flagError");
 const resetBtn      = document.getElementById("resetBtn");
 
+function getPaths() {
+  try {
+    return JSON.parse(localStorage.getItem(PATHS_KEY)) || [];
+  } catch {
+    return [];
+  }
+}
+
+function savePath(path) {
+  const paths = getPaths();
+  if (!paths.includes(path)) {
+    paths.push(path);
+    localStorage.setItem(PATHS_KEY, JSON.stringify(paths));
+  }
+}
+
+function renderPaths() {
+  const paths = getPaths();
+  if (paths.length === 0) {
+    uploadResult.innerHTML = "";
+    return;
+  }
+  uploadResult.style.color = "#27ae60";
+  uploadResult.innerHTML = `
+    <strong style="display:block;margin-bottom:6px;">Uploaded files:</strong>
+    ${paths.map(p => `<code style="display:block;margin-bottom:4px;">${p}</code>`).join("")}
+  `;
+}
+
 function renderSolved(solved) {
   if (solved) {
     labStatus.classList.add("solved");
@@ -49,17 +78,8 @@ function renderSolved(solved) {
   }
 }
 
-// Restore uploaded path if it exists from a previous load
-function restoreUploadPath() {
-  const saved = localStorage.getItem(PATH_KEY);
-  if (saved) {
-    uploadResult.style.color = "#27ae60";
-    uploadResult.innerHTML   = `Uploaded to <code>${saved}</code>`;
-  }
-}
-
 renderSolved(localStorage.getItem(SOLVED_KEY) === "true");
-restoreUploadPath();
+renderPaths();
 
 uploadForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -68,8 +88,6 @@ uploadForm.addEventListener("submit", async (e) => {
 
   uploadBtn.disabled     = true;
   uploadBtn.textContent  = "Uploading...";
-  uploadResult.style.color = "var(--text-secondary)";
-  uploadResult.textContent = "";
 
   try {
     const body = new FormData();
@@ -80,9 +98,8 @@ uploadForm.addEventListener("submit", async (e) => {
     const data = await res.json();
 
     if (data.success) {
-      localStorage.setItem(PATH_KEY, data.path);
-      uploadResult.style.color = "#27ae60";
-      uploadResult.innerHTML   = `Uploaded to <code>${data.path}</code>`;
+      savePath(data.path);
+      renderPaths();
     } else {
       uploadResult.style.color = "var(--red)";
       uploadResult.textContent = data.message || "Upload failed.";
@@ -135,9 +152,9 @@ resetBtn.addEventListener("click", async () => {
   }
   localStorage.removeItem(SOLVED_KEY);
   localStorage.removeItem(SESSION_KEY);
-  localStorage.removeItem(PATH_KEY);
+  localStorage.removeItem(PATHS_KEY);
   fileInput.value          = "";
-  uploadResult.textContent = "";
+  uploadResult.innerHTML   = "";
   flagInput.value          = "";
   flagError.textContent    = "";
   renderSolved(false);
