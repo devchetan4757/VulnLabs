@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-const FLAG = 'CVX{web_based_terminal_w0w}';
+const FLAG = 'FLAG{web_based_terminal_w0w}';
 
 $raw = file_get_contents('php://input');
 $input = json_decode($raw, true);
