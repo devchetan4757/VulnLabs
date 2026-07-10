@@ -3,18 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IMAGE Only Please!</title>
+    <title>Images Only Please!</title>
     <link rel="stylesheet" href="/assets/style.css">
   </head>
   <body>
     <div id="root" class="app">
 
       <header class="header">
-        <div class="header-left">
-          <img src="/assets/logo.jpg" alt="CyberVulnX" class="club-logo">
-        </div>
-        <div class="header-right">
-          <div class="lab-title">IMAGE Only Please!</div>
+        <div class="header-right" style="margin-left:auto">
+          <div class="lab-title">Images Only Please!</div>
           <div class="lab-status" id="labStatus">
             <div class="status-box" id="statusBox"></div>
             <span id="statusText">Not Solved</span>
@@ -24,22 +21,23 @@
 
       <section class="login-intro">
         <div class="intro-meta">
-          <span>Internal Portal</span>
+          <span>Web Security Lab</span>
           <span>&bull;</span>
-          <span>Restricted Access</span>
+          <span>File Upload</span>
         </div>
 
-        <h1 class="intro-title">CyberVulnX Image Upload Bypass</h1>
+        <h1 class="intro-title">Client-Side Upload Bypass</h1>
 
         <p class="intro-text">
-          CyberVulnX exposes a <code>Profile Picture Upload</code> endpoint that only
-          accepts image files. The <code>jpg, jpeg, png, gif</code> restriction is
-          enforced client-side only.
+          This application exposes a <code>Profile Picture Upload</code> endpoint.
+          It only accepts image files — <code>jpg, jpeg, png, gif</code> — enforced
+          entirely on the client side.
         </p>
 
         <p class="intro-text">
-          Get a disallowed file saved into the server's files directory. Find the
-          flag hidden alongside it and submit it below.
+          The server trusts the client completely and saves whatever it receives.
+          Your goal is to get a non-image file uploaded and execute it on the server.
+          A flag is hidden somewhere in the server's filesystem — find it and submit it below.
         </p>
       </section>
 
@@ -67,11 +65,8 @@
             </div>
 
             <div class="waf-status-row">
-              <span class="waf-status-label">Instructions</span>
-              <span style="font-size:.9rem;color:var(--text-secondary);line-height:1.6">
-                Upload a file to <code style="font-family:Consolas,monospace;color:var(--red)">/files/</code>
-                that bypasses the type restriction, then submit the flag you find.
-              </span>
+              <span class="waf-status-label">Validation</span>
+              <span class="waf-status-value blocked">Client-side only</span>
             </div>
 
           </div>
@@ -102,7 +97,7 @@
           <div class="login-form-accent"></div>
           <div class="login-form-body">
             <div class="input-group">
-              <label for="flag"></label>
+              <label for="flag">Flag</label>
               <div class="input-wrapper">
                 <span class="input-icon">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
@@ -121,7 +116,7 @@
       </section>
 
       <footer class="footer">
-        <p>CyberVulnX &bull; IMAGE Only Please!</p>
+        <p>Web Security Lab &bull; Client-Side Upload Bypass</p>
       </footer>
 
     </div>

@@ -13,13 +13,16 @@ if (!isset($_FILES['file']) || $_FILES['file']['error'] !== UPLOAD_ERR_OK) {
     exit;
 }
 
-$file = $_FILES['file'];
-
-// Vulnerable by design: the original filename — and therefore its
-// extension — is trusted outright. The only place a "jpg/png only"
-// rule is enforced is client-side, in the browser.
+$file     = $_FILES['file'];
 $filename = basename($file['name']);
 $destination = $FILES_DIR . '/' . $filename;
+
+// Write-once — reject if a file with this name already exists
+if (file_exists($destination)) {
+    http_response_code(409);
+    echo json_encode(['success' => false, 'message' => 'A file with that name already exists.']);
+    exit;
+}
 
 if (!move_uploaded_file($file['tmp_name'], $destination)) {
     http_response_code(500);

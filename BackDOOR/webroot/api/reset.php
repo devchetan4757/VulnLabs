@@ -1,15 +1,6 @@
 <?php
 header('Content-Type: application/json');
 
-$FILES_DIR = __DIR__ . '/../files';
-
-if (is_dir($FILES_DIR)) {
-    foreach (scandir($FILES_DIR) as $entry) {
-        if ($entry === '.' || $entry === '..') {
-            continue;
-        }
-        @unlink($FILES_DIR . '/' . $entry);
-    }
-}
-
+// Files on disk are permanent — once uploaded they stay.
+// Reset only clears the client-side solved state (handled in JS).
 echo json_encode(['success' => true, 'message' => 'Lab reset.']);

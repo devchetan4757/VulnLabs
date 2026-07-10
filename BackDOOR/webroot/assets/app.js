@@ -1,4 +1,4 @@
-const SOLVED_KEY = "cybervulnx-solved";
+const SOLVED_KEY = "lab-solved";
 
 const statusBox = document.getElementById("statusBox");
 const statusText = document.getElementById("statusText");
@@ -22,7 +22,7 @@ function renderSolved(solved) {
     successBanner.innerHTML = `
       <div class="success-banner">
         <h3>Challenge Completed</h3>
-        <p>Upload restriction bypassed. Server compromised.</p>
+        <p>File upload restriction bypassed. Non-image file executed on server.</p>
       </div>`;
     flagForm.style.display = "none";
   } else {
