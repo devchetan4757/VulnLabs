@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <p>
-        CyberVulnX • IDOR Lab
+         • IDOR Lab
       </p>
     </footer>
   );

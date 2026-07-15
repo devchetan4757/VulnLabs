@@ -4,7 +4,7 @@ import OrderForm from "./OrderForm";
 import OrderResponse from "./OrderResponse";
 import SuccessBanner from "./SuccessBanner";
 
-const SOLVED_KEY = "cybervulnx-solved";
+const SOLVED_KEY = "idor-solved";
 
 export default function OrderSection({ solved, setSolved }) {
   const [message, setMessage] = useState("");

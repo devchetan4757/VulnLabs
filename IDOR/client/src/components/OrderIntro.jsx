@@ -9,11 +9,11 @@ export default function OrderIntro() {
       </div>
 
       <h1 className="intro-title">
-        CyberVulnX Order Tracker
+        Order Tracker
       </h1>
 
       <p className="intro-text">
-        Welcome to the CyberVulnX member shop. Once you place
+        Welcome to the Vuln member shop. Once you place
         an order, you can look it up here by entering your
         Order ID. Your account session is used to identify
         who you are — no extra password needed.
