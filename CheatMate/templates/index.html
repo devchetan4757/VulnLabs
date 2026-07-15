@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CheatMate — Chess Lab</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="card">
+  <div class="eyebrow">LAB ·</div>
+  <h1>♟ CheatMate</h1>
+  <p class="subtitle">Philidor's Legacy.. You must win the game for reward.</p>
+
+  <div class="players">
+    <span class="side"><span class="dot white"></span>Bot — White</span>
+    <span class="side">Black<span class="you-tag">YOU</span><span class="dot black"></span></span>
+  </div>
+
+  <div id="board-wrap"><div id="board"></div></div>
+
+  <div class="controls">
+    <button id="startBtn">Start Game</button>
+    <button id="claimBtn" disabled>Claim Result</button>
+    <button id="resetBtn">Reset</button>
+  </div>
+
+  <div id="status"></div>
+  <div id="result"></div>
+
+  <div id="flag-check">
+    <label for="flagInput">Got the flag? Paste it here to verify:</label>
+    <div class="flag-check-row">
+      <input type="text" id="flagInput" placeholder="FLAG{...}" autocomplete="off" spellcheck="false" />
+      <button id="flagSubmitBtn">Check</button>
+    </div>
+    <div id="flagCheckMsg"></div>
+  </div>
+
+  <div id="eval-box">
+    <div class="eval-label-row">
+      <span>Evaluation</span>
+      <span id="eval-readout">0.0</span>
+    </div>
+    <div class="eval-track"><div id="eval-fill"></div></div>
+    <div class="eval-note" id="eval-note">Engine idle — press Start.</div>
+  </div>
+</div>
+
+<div id="mate-overlay">
+  <div id="mate-popup">
+    <div class="mate-title">Checkmate</div>
+    <div class="mate-msg" id="mate-msg"></div>
+    <button id="mateCloseBtn">Close</button>
+  </div>
+</div>
+
+<div id="congrats-overlay">
+  <div id="congrats-popup">
+    <div class="congrats-title" id="congrats-title"></div>
+    <div class="congrats-msg" id="congrats-msg"></div>
+    <div class="congrats-subtext" id="congrats-subtext"></div>
+    <img id="congrats-meme" alt="celebration meme" />
+    <button id="congratsCloseBtn">Close</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
