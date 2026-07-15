@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SuccessBanner from "./SuccessBanner";
 
-const SOLVED_KEY = "cybervulnx-solved";
+const SOLVED_KEY = "waf-solved";
 
 export default function WafSection({ solved, setSolved }) {
   const [flag, setFlag] = useState("");

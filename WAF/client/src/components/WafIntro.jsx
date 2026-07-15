@@ -9,11 +9,11 @@ export default function WafIntro() {
       </div>
 
       <h1 className="intro-title">
-        CyberVulnX WAF Bypass
+        WAF Bypass
       </h1>
 
       <p className="intro-text">
-        CyberVulnX runs an internal admin dashboard at <code>/admin</code>.
+         There's an internal admin dashboard at <code>/admin</code>.
         A legacy WAF middleware is protecting it and will block any direct
         request to that path.
       </p>

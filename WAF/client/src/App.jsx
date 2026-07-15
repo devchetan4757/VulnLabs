@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 
 function App() {
   const [solved, setSolved] = useState(
-    localStorage.getItem("cybervulnx-solved") === "true"
+    localStorage.getItem("waf-solved") === "true"
   );
 
   return (

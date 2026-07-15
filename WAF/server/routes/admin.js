@@ -25,7 +25,7 @@ router.get("/", legacyWaf, (req, res) => {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CyberVulnX Internal Dashboard</title>
+<title> Internal Dashboard</title>
 
 <style>
 
@@ -288,7 +288,7 @@ color:#777;
 <div class="header">
 
 <div class="logo">
-<h1>CyberVulnX Admin Panel</h1>
+<h1>Admin Panel</h1>
 <p>Internal Administration Portal</p>
 </div>
 
@@ -344,7 +344,7 @@ System Information
 
 <div class="info-row">
 <span>Hostname</span>
-<strong>cvx-admin-01</strong>
+<strong>vuln-admin-01</strong>
 </div>
 
 <div class="info-row">
@@ -406,7 +406,7 @@ CVX{w4f_byp4ss_succ3ss}
 </a>
 
 <div class="notice">
-CyberVulnX Internal Dashboard
+ Internal Dashboard
 </div>
 
 </div>

@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <p>
-        CyberVulnX • WAF Bypass Lab
+        • WAF Bypass Lab
       </p>
     </footer>
   );
