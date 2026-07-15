@@ -1,5 +1,5 @@
 {
-  "name": "cybervulnx-docker-lab",
+  "name": "docker-vuln-lab",
   "private": true,
   "version": "1.0.0",
   "type": "module",

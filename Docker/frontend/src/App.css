@@ -59,9 +59,8 @@ html, body {
 }
 
 .club-logo {
-  max-width: 340px;
-  width: 100%;
-  height: auto;
+  font-size: 2.4rem;
+  line-height: 1;
 }
 
 .header-right {

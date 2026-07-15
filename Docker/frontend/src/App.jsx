@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 
 function App() {
   const [solved, setSolved] = useState(
-    localStorage.getItem("cybervulnx-docker-solved") === "true"
+    localStorage.getItem("docker-solved") === "true"
   );
 
   return (
